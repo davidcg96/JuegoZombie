@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CameraTarget
+  - Weapon
+  - PlayerWaeapon
   layers:
   - Default
   - TransparentFX

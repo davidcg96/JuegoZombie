@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 511744634564630110}
   m_Layer: 0
   m_Name: Knife_Prefab
-  m_TagString: Untagged
+  m_TagString: PlayerWaeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9d85f95073d624681c8c2b0085c414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeSpan: 2
 --- !u!1001 &7180024878728669304
 PrefabInstance:
   m_ObjectHideFlags: 0
