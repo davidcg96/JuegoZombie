@@ -17,7 +17,29 @@ public class PlayerHealth : MonoBehaviour
     private new AudioSource audio; //fuente de adio
     public AudioClip hurtAudio; //audio para cuando me dañan al jugador
     public AudioClip deadAudio; //audio cuando muere el jugador
+    public AudioClip itemHealtAudio; //audio cuando muere el jugador
 
+    private new ParticleSystem particleSystem;
+
+    public bool moduleEnable;
+
+    //para obtener la vida del jugador desde otros scripts
+    public int CurrentHealth
+    { 
+        get { return currentHealth; }
+        set 
+        { 
+            if (value < 0) currentHealth = 0; 
+            else currentHealth = value; 
+        } 
+    }
+
+    //para moificar el timer desde el script de poweritem y que se resetee al cojer le item y quitar el bug de que el primer golpe te haga daño
+    public float Timer
+    {
+        get { return timer; }
+        set { timer = 0; }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +47,9 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = startingHealth; //igualo la vida ctual con la inicial
         characterMovement = GetComponent<CharacterMovement>();
         audio = GetComponent<AudioSource>();
+        particleSystem = GetComponent<ParticleSystem>();
+        var emision = particleSystem.emission;
+        emision.enabled = moduleEnable;
     }
 
     // Update is called once per frame
@@ -72,5 +97,20 @@ public class PlayerHealth : MonoBehaviour
             characterMovement.enabled= false;
             audio.PlayOneShot(deadAudio);
         }
+    }
+
+    //funcion de cura
+    public void PowerUpHealth()
+    {
+        if (currentHealth<=80)
+        {
+            currentHealth += 20; //si tomo el item de slaud y tengo menos de 80 de vida sumame 20
+        }
+        else if (currentHealth< startingHealth)
+        {
+            CurrentHealth=startingHealth; // si estoy en 80 y 100, ponme a 100
+        }
+        healthSlider.value = currentHealth; //muevo la varra de salud
+        audio.PlayOneShot(itemHealtAudio);
     }
 }

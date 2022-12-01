@@ -16,9 +16,14 @@ public class Enemy02Health : MonoBehaviour
     private new Rigidbody rigidbody;  // para desplazar el cuerpo hacia abajo
     private CapsuleCollider capsuleCollider; //para desactivarlo
     private bool disapearEnemy = false; //para saber si ha desaparecido
+
+    //funete de sonido
     private new AudioSource audio; //audio
     public AudioClip hurtClip;
     public AudioClip dieClip;
+
+    //arrojar items
+    private DropItema dropItems; //referencia al script
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +35,7 @@ public class Enemy02Health : MonoBehaviour
         isAlive = true;
         curretHealth = startingHealth;
         audio=GetComponent<AudioSource>();
+        dropItems = GetComponent<DropItema>();
         
     }
 
@@ -89,6 +95,7 @@ public class Enemy02Health : MonoBehaviour
         audio.PlayOneShot(dieClip);
 
         StartCoroutine(RemoveEnemy());
+        dropItems.Drop();
     }
 
     IEnumerator RemoveEnemy()
