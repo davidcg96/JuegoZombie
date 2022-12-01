@@ -57,13 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SmoothFollow.cs" />
+    <Compile Include="Assets\Scripts\Enemy01\Enemy01Health.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Enemy01\Enemy01Move.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\Player\KnifeDestruction.cs" />
     <Compile Include="Assets\Scripts\Enemy01\Enemy01Atack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
-    <Compile Include="Assets\Scripts\Enemy01\Enemy01Health.cs" />
+    <Compile Include="Assets\Scripts\Enemy02\ArcherAttack.cs" />
+    <Compile Include="Assets\Scripts\Enemy02\Enemy02Health.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
